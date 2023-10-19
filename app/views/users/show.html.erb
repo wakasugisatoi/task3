@@ -1,0 +1,34 @@
+<div>
+   <%= flash[:notice] %>
+</div>
+
+<div class = "col-md-3">
+ <%= render 'list', book: @book, user: @user%>
+</div>
+<div class = "col-md-8 offset-md-1">
+<h1>Books</h1>
+ <table>
+    <thead>
+     <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+     </tr>
+    </thead>
+    <tbody>
+    <% @books.each do |books| %>
+     <tr>
+      <td>
+       <%= link_to user_path(@user.id) do %>
+         <%= image_tag books.user.get_profile_image(100,100) %>
+       <% end %>
+      </td>
+      <td><%= link_to books.title, book_path(books.id) %></td>
+      <td><%= books.body %></td>
+     </tr>
+    <% end %>
+    </tbody>
+ </table>
+</div>
+
